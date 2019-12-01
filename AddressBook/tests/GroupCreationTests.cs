@@ -20,17 +20,17 @@ public class GroupCreationTests:TestBase
     [Test]
     public void GroupCreationTest()
         {
-            GoToHomePage();
-            Login(new AccountData("admin", "secret"));
-            GoToGroupPageq();
-            InitGroupCreation();
+            app.Navigator.GoToHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
+            app.Navigator.GoToGroupPageq();
+            app.Group.InitGroupCreation();
             GroupData group = new GroupData("aaa");
             group.Header = "bbb";
             group.Footer = "ccc";
-            FillGroupForm(group);
-            SubmitGroupCreation();
-            ReturToGroupPage();
-            driver.Close();
+            app.Group.FillGroupForm(group);
+            app.Group.SubmitGroupCreation();
+            app.Navigator.ReturToGroupPage();
+            app.Stop();
         }
 
         
