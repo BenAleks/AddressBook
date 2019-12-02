@@ -14,9 +14,9 @@ namespace AddressBook
     {
         protected IWebDriver driver;
         protected string baseUrl;
-        protected LoginHelper auth;
-        protected NavigateHelper navigator;
-        protected GroupHelper group;
+        private LoginHelper auth;
+        private NavigateHelper navigator;
+        private GroupHelper group;
 
         public ApplicationManager()
         {
@@ -27,9 +27,10 @@ namespace AddressBook
             group = new GroupHelper(driver);
             
         }
-        public LoginHelper Auth { get; set; }
-        public NavigateHelper Navigator { get; set; }
-        public GroupHelper Group { get; set; }
+        
+        public NavigateHelper Navigator { get => navigator; set => navigator = value; }
+        public GroupHelper Group { get => group; set => group = value; }
+        public LoginHelper Auth { get => auth; set => auth = value; }
 
         public void Stop()
         {

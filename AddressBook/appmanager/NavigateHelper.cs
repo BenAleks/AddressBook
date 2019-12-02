@@ -24,7 +24,7 @@ namespace AddressBook
         }
         public void GoToHomePage()
         {
-            driver.Navigate().GoToUrl("http://winerror.h1n.ru/index.php");
+            driver.Navigate().GoToUrl(baseUrl);
         }
     }
 }

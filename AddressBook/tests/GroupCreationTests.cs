@@ -20,7 +20,7 @@ public class GroupCreationTests:TestBase
     [Test]
     public void GroupCreationTest()
         {
-            app.Navigator.GoToHomePage();
+            app.Navigator.GoToHomePage();            
             app.Auth.Login(new AccountData("admin", "secret"));
             app.Navigator.GoToGroupPageq();
             app.Group.InitGroupCreation();
