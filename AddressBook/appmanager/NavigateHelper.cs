@@ -14,17 +14,16 @@ namespace AddressBook
         {
             this.baseUrl = baseUrl;
         }
-        public void ReturToGroupPage()
-        {
-            driver.FindElement(By.LinkText("group page")).Click();
-        }
-        public void GoToGroupPageq()
+        
+        public NavigateHelper GoToGroupPageq()
         {
             driver.FindElement(By.LinkText("groups")).Click();
+            return this;
         }
-        public void GoToHomePage()
+        public NavigateHelper GoToHomePage()
         {
             driver.Navigate().GoToUrl(baseUrl);
+            return this;
         }
     }
 }

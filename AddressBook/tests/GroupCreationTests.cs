@@ -27,9 +27,10 @@ public class GroupCreationTests:TestBase
             GroupData group = new GroupData("aaa");
             group.Header = "bbb";
             group.Footer = "ccc";
-            app.Group.FillGroupForm(group);
-            app.Group.SubmitGroupCreation();
-            app.Navigator.ReturToGroupPage();
+            app.Group
+                .FillGroupForm(group)
+                .SubmitGroupCreation()
+                .ReturToGroupPage();
             app.Stop();
         }
 
