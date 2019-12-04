@@ -20,20 +20,24 @@ public class GroupCreationTests:TestBase
     [Test]
     public void GroupCreationTest()
         {
-            app.Navigator.GoToHomePage();            
-            app.Auth.Login(new AccountData("admin", "secret"));
-            app.Navigator.GoToGroupPageq();
-            app.Group.InitGroupCreation();
             GroupData group = new GroupData("aaa");
             group.Header = "bbb";
             group.Footer = "ccc";
-            app.Group
-                .FillGroupForm(group)
-                .SubmitGroupCreation()
-                .ReturToGroupPage();
-            app.Stop();
+
+            
+            app.Group.Create(group);
+            
+        }
+    [Test]
+    public void EmptyGroupCreationTest()
+        {
+            GroupData group = new GroupData("");
+            group.Header = "";
+            group.Footer = "";
+
+            app.Group.Create(group);
+            
         }
 
-        
     }
 }

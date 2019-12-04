@@ -22,12 +22,20 @@ namespace AddressBook
         {
             driver = new FirefoxDriver();
             baseUrl = "http://winerror.h1n.ru/index.php";
-            auth = new LoginHelper(driver);
-            navigator = new NavigateHelper(driver, baseUrl);
-            group = new GroupHelper(driver);
+            auth = new LoginHelper(this);
+            navigator = new NavigateHelper(this, baseUrl);
+            group = new GroupHelper(this);
             
         }
-        
+        public IWebDriver Driver
+        {
+            get
+            {
+                return driver;
+            }
+
+        }
+
         public NavigateHelper Navigator { get => navigator; set => navigator = value; }
         public GroupHelper Group { get => group; set => group = value; }
         public LoginHelper Auth { get => auth; set => auth = value; }

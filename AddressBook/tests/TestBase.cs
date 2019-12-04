@@ -21,6 +21,8 @@ namespace AddressBook
         public void SetUp()
         {
             app = new ApplicationManager();
+            app.Navigator.GoToHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
         }
         [TearDown]
         public void TearDown()

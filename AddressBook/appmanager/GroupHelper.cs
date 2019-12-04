@@ -9,8 +9,19 @@ namespace AddressBook
 {
     public class GroupHelper:HelperBase
     {
-        public GroupHelper(IWebDriver driver):base(driver)
+        public GroupHelper(ApplicationManager manager):base(manager)
         {}
+        
+        public GroupHelper Create(GroupData group)
+        {
+            manager.Navigator.GoToGroupPageq();
+            InitGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            ReturToGroupPage();
+            return this;
+        }
+
         public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
