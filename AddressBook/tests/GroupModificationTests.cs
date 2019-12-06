@@ -10,18 +10,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-
 namespace AddressBook
 {
-    public class TestBase
+    [TestFixture]
+    public class GroupModificationTests : AuthTestBase
     {
-        protected ApplicationManager app;
-        
-        [SetUp]
-        public void SetupApplicationMAnager()
+
+        [Test]
+        public void GroupModificationTest()
         {
-            app = ApplicationManager.GetInstance();
+            GroupData newData = new GroupData("ccc");
+            newData.Header = "zzz";
+            newData.Footer = "xxx";
+            
+            app.Group.Modify(1, newData);
+
         }
         
+
     }
 }

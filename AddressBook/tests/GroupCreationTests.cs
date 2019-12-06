@@ -14,13 +14,13 @@ using System.Threading;
 namespace AddressBook
 {
 [TestFixture]
-public class GroupCreationTests:TestBase
-     {
+public class GroupCreationTests: AuthTestBase
+    {
     
     [Test]
     public void GroupCreationTest()
         {
-            GroupData group = new GroupData("aaa");
+            GroupData group = new GroupData("333");
             group.Header = "bbb";
             group.Footer = "ccc";
 

@@ -18,7 +18,28 @@ namespace AddressBook
             this.manager = manager;
             this.driver = manager.Driver;
         }
+        protected void Type(By locator, string text)
+        {
+            if (text != null)
+            {
+                driver.FindElement(locator).Click();
+                driver.FindElement(locator).SendKeys(text);
+            }
 
-        
+        }
+        protected bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
     }
+
 }

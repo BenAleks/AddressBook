@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -17,8 +18,9 @@ namespace AddressBook
         private LoginHelper auth;
         private NavigateHelper navigator;
         private GroupHelper group;
+        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
-        public ApplicationManager()
+        private ApplicationManager()
         {
             driver = new FirefoxDriver();
             baseUrl = "http://winerror.h1n.ru/index.php";
@@ -26,6 +28,20 @@ namespace AddressBook
             navigator = new NavigateHelper(this, baseUrl);
             group = new GroupHelper(this);
             
+        }
+        ~ApplicationManager()
+        {
+            driver.Quit();
+        }
+        public static ApplicationManager GetInstance()
+        {
+            if (!app.IsValueCreated)
+            {
+                ApplicationManager newInstance = new ApplicationManager();
+                newInstance.Navigator.GoToHomePage();
+                app.Value = newInstance;
+            }
+            return app.Value;
         }
         public IWebDriver Driver
         {
@@ -40,9 +56,6 @@ namespace AddressBook
         public GroupHelper Group { get => group; set => group = value; }
         public LoginHelper Auth { get => auth; set => auth = value; }
 
-        public void Stop()
-        {
-            driver.Quit();
-        }
+ 
     }
 }

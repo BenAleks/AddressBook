@@ -10,18 +10,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-
 namespace AddressBook
 {
-    public class TestBase
+    [TestFixture]
+    public class GroupRemovalTests : AuthTestBase
     {
-        protected ApplicationManager app;
-        
-        [SetUp]
-        public void SetupApplicationMAnager()
+
+        [Test]
+        public void GroupRemovalTest()
         {
-            app = ApplicationManager.GetInstance();
+            app.Group.Remove(1);
         }
-        
+
+
     }
 }
