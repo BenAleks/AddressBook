@@ -23,6 +23,7 @@ namespace AddressBook
         private ApplicationManager()
         {
             driver = new FirefoxDriver();
+
             baseUrl = "http://winerror.h1n.ru/index.php";
             auth = new LoginHelper(this);
             navigator = new NavigateHelper(this, baseUrl);
